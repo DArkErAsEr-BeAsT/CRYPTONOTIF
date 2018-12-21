@@ -20,7 +20,7 @@ import java.io.BufferedReader;
 public class MAIL extends Object {
 	
 	
-
+//BLABLABLABLBALBALABOAFZAPOZFNPAZNF
 	public static void main(String args[] ) {
 		Timer timer1 = new Timer ();
 		( timer1).scheduleAtFixedRate(new TimerTask() {
