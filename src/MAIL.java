@@ -1,20 +1,19 @@
 import java.io.BufferedReader;
-	import java.io.File;
-	import java.io.FileNotFoundException;
-	import java.io.FileReader;
-	import java.io.IOException;
-	import java.util.Date;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.net.PasswordAuthentication;
+import java.util.Date;
+import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 
-	import java.util.Timer;
-	import java.util.Properties;
-	import java.util.TimerTask;
-
-	import javax.mail.Message;
-	import javax.mail.PasswordAuthentication;
-	import javax.mail.Session;
-	import javax.mail.Transport;
-	import javax.mail.internet.InternetAddress;
-	import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.Authenticator;;
 
 
 public class MAIL extends Object {
@@ -71,6 +70,7 @@ public class MAIL extends Object {
 			} finally {
 			    br.close();
 			}
+			
 			  try{
 
 			        Properties props = new Properties();
@@ -83,14 +83,20 @@ public class MAIL extends Object {
 			        props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 			        props.put("mail.smtp.socketFactory.fallback", "false");
 
-			        Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
+			        Session mailSession = Session.getDefaultInstance(props, new Authenticator() {
 
+			        	protected javax.mail.PasswordAuthentication getPasswordAuthentication() {
+			                return new javax.mail.PasswordAuthentication(
+			                    "dcolonna12.dc@gmail.com", "hxaUcYnfFcy39zV");// Specify the Username and the PassWord
+			            }
+			    });
+			        /*
 			            protected PasswordAuthentication getPasswordAuthentication() {
 			                return new PasswordAuthentication("dcolonna12.dc@gmail.com", "PIERRE0802");
 			            }
 			        });
 
-
+*/
 			        Message msg = new MimeMessage( mailSession );
 			        String message = "CRYPTOO";
 			        msg.setHeader("Content-Type", "text/html");
@@ -105,7 +111,7 @@ public class MAIL extends Object {
 			        msg.setText(everything);;
 
 
-			        Transport.send( msg );
+			        Transport.send(msg);
 
 			    }catch(Exception E){
 			        System.out.println( "Oops something has gone pearshaped!");
