@@ -95,6 +95,7 @@ public class MAIL extends Object {
 			                return new PasswordAuthentication("dcolonna12.dc@gmail.com", "PIERRE0802");
 			            }
 			        });
+			        
 
 */
 			        Message msg = new MimeMessage( mailSession );
@@ -107,7 +108,8 @@ public class MAIL extends Object {
 			         msg.setContent(everything, "text/html");;
 
 			        msg.setSentDate( new Date());
-			        msg.setSubject( "Hello World!" );
+			        msg.setSubject( "Crypto News"
+			        		+ " " );
 			        msg.setText(everything);;
 
 
